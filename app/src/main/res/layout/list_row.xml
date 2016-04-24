@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dp" >
+
+    <!-- ImageArtist -->
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp"/>
+
+    <!-- TextNameArtist -->
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textSize="@dimen/title"
+        android:textStyle="bold" />
+
+    <!-- TextGenres -->
+    <TextView
+        android:id="@+id/genres"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textSize="@dimen/info"
+        android:textColor="@color/info"/>
+
+
+
+    <!-- TextAlbums -->
+    <TextView
+        android:id="@+id/albums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/genres"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textColor="@color/info"
+        android:textSize="@dimen/info"
+        android:text="Альбомов:"/>
+
+    <!-- Nalbums -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Nalbums"
+        android:layout_below="@id/genres"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/albums"
+        android:textColor="@color/info"
+        android:textSize="@dimen/info"
+        android:layout_marginLeft="5dp"/>
+
+
+    <!-- TextTracks -->
+    <TextView
+        android:id="@+id/tracks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/albums"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textColor="@color/info"
+        android:textSize="@dimen/info"
+        android:text="Песен:"/>
+    <!-- Ntracks -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Ntracks"
+        android:layout_below="@id/albums"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/tracks"
+        android:textColor="@color/info"
+        android:textSize="@dimen/info"
+        android:layout_marginLeft="5dp"
+        />
+
+</RelativeLayout>
