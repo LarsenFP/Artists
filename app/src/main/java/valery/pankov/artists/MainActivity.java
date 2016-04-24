@@ -1,14 +1,14 @@
 package valery.pankov.artists;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -19,9 +19,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapter.CustomListAdapter;
 import app.AppController;
 import model.Artists;
 
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     final String LOG_TAG = "myLogs";
     //private static final String TAG = MainActivity.class.getSimpleName();
 
-    // Movies json url
+    // URL
     private static final String url = "http://cache-default06e.cdn.yandex.net/download.cdn.yandex.net/mobilization-2016/artists.json";
     private ProgressDialog pDialog;
     private List<Artists> artistsList = new ArrayList<Artists>();
@@ -52,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
         pDialog.show();
 
         // Creating volley request obj
-        JsonArrayRequest movieReq = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
+        JsonArrayRequest artistReq = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d(LOG_TAG, response.toString());
@@ -65,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 JSONObject obj = response.getJSONObject(i);
                                 Artists artists = new Artists();
-                                artists.setName(obj.getString("name"));
+
+                                String name = new String(obj.getString("name").getBytes("ISO-8859-1"), "UTF-8");
+                                artists.setName(name);
                                 artists.setAlbums(obj.getInt("albums"));
                                 artists.setTracks(obj.getInt("tracks"));
 
@@ -73,18 +76,7 @@ public class MainActivity extends AppCompatActivity {
                                 artists.setThumbnailUrl(cover.getString("small"));
                                 Log.d(LOG_TAG, "small: " + cover.getString("small"));
 
-                                //JSONArray coverArray = obj.getJSONArray("cover");
-                                //ArrayList<String> covers = new ArrayList<String>();
-
-                                //for (int j = 0; j < coverArray.length(); j++) {
-                                //     covers.add((String) coverArray.get(j));
-                                //}
-                                //Log.d(LOG_TAG, "name: " + artists.toString());
-
-
-
-
-                                // Genre is json array
+                                // Genres is json array
                                 JSONArray genresArray = obj.getJSONArray("genres");
                                 ArrayList<String> genres = new ArrayList<String>();
                                 for (int j = 0; j < genresArray.length(); j++) {
@@ -93,10 +85,12 @@ public class MainActivity extends AppCompatActivity {
                                 artists.setGenres(genres);
                                 //Log.d(LOG_TAG, "genres: " + genres.toString());
 
-                                // adding movie to movies array
+                                // adding artists to artists array
                                 artistsList.add(artists);
 
                             } catch (JSONException e) {
+                                e.printStackTrace();
+                            } catch (UnsupportedEncodingException e) {
                                 e.printStackTrace();
                             }
 
@@ -115,8 +109,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Getting item id and name of artist
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "
+                        + id);
+                TextView text = (TextView) view.findViewById(R.id.name);
+                //String selectedFromList = (listView.getItemAtPosition(position)).toString();
+                String artistname = text.getText().toString();
+
+                Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                intent.putExtra("POS",position);
+                intent.putExtra("NAME",artistname);
+                Log.d(LOG_TAG, "name: " + artistname);
+                startActivity(intent);
+            }
+        });
+
         // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(movieReq);
+        AppController.getInstance().addToRequestQueue(artistReq);
     }
 
     @Override

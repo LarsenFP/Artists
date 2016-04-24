@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="6dp" >
+    android:padding="2dp" >
 
     <!-- ImageArtist -->
     <com.android.volley.toolbox.NetworkImageView
@@ -20,6 +20,7 @@
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/title"
+        android:textColor="@color/title"
         android:textStyle="bold" />
 
     <!-- TextGenres -->
@@ -28,7 +29,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
-        android:layout_marginTop="1dip"
+        android:layout_marginTop="0dip"
         android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/info"
         android:textColor="@color/info"/>
@@ -45,7 +46,8 @@
         android:layout_toRightOf="@+id/thumbnail"
         android:textColor="@color/info"
         android:textSize="@dimen/info"
-        android:text="Альбомов:"/>
+        android:text="Альбомов:"
+        />
 
     <!-- Nalbums -->
     <TextView

@@ -1,4 +1,4 @@
-package valery.pankov.artists;
+package adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +16,7 @@ import java.util.List;
 
 import app.AppController;
 import model.Artists;
+import valery.pankov.artists.R;
 
 /**
  * Created by Valery on 24.04.2016.
