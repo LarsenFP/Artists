@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="8dp">
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/img"
+        android:layout_width="fill_parent"
+        android:layout_height="230dp"
+        android:layout_alignParentLeft="true"
+        />
+
+    <!-- TextGenres -->
+    <TextView
+        android:id="@+id/genres"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img"
+        android:layout_marginTop="4dip"
+        android:layout_marginLeft="8dp"
+        android:textSize="@dimen/info"
+        android:textColor="@color/info"/>
+
+    <!-- TextAlbums&Tracks -->
+    <TextView
+        android:id="@+id/albtracks"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/genres"
+        android:layout_marginTop="5dip"
+        android:layout_marginLeft="8dp"
+        android:textSize="@dimen/info"
+        android:textColor="@color/info"/>
+
+
+    <!--Title -->
+    <TextView
+        android:id="@+id/tvtitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/albtracks"
+        android:layout_marginTop="5dip"
+        android:layout_marginLeft="8dp"
+        android:textSize="19dp"
+        android:textColor="@color/title"
+
+        android:text="Биография"/>
+
+    <!-- Biography -->
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvtitle"
+        android:layout_marginBottom="8dp"
+        android:fillViewport="true">
+    <TextView
+        android:id="@+id/biography"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="@dimen/info"
+        android:textColor="@color/title"
+
+
+        />
+    </ScrollView>
+
+</RelativeLayout>
