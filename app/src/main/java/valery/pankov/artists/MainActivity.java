@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "
                         + id);
                 TextView text = (TextView) view.findViewById(R.id.name);
-                //String selectedFromList = (listView.getItemAtPosition(position)).toString();
+
                 String artistname = text.getText().toString();
 
                 Intent intent = new Intent(MainActivity.this, InfoActivity.class);

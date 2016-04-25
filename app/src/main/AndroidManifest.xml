@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InfoActivity"
-            android:label="Биография"
-            />
+        android:name=".InfoActivity"
+        android:label="Биография"
+        />
     </application>
 
 </manifest>
