@@ -99,7 +99,7 @@ public class InfoActivity extends AppCompatActivity {
                     final NetworkImageView img = (NetworkImageView) (NetworkImageView) findViewById(R.id.img);
                     img.setImageUrl(cover.getString("big"), imageLoader);
                     img.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    //Размер картинки поадобится в будущем
+                    //Размер картинки понадобится в будущем
                     final int iw = img.getWidth();
                     final int ih = img.getHeight();
                     Log.d(LOG_TAG, "height " + ih);
@@ -118,6 +118,7 @@ public class InfoActivity extends AppCompatActivity {
                             final RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) img.getLayoutParams();
                             int actheight = params.height;
 
+                            //Анимация по увеличению картинки
                             Animation a = new Animation() {
                                 @Override
                                 protected void applyTransformation(float interpolatedTime, Transformation t) {
@@ -128,6 +129,7 @@ public class InfoActivity extends AppCompatActivity {
                             };
                             a.setDuration(750);
 
+                            //Анмация по обратному уменьшению картинки
                             Animation b = new Animation() {
                                 @Override
                                 protected void applyTransformation(float interpolatedTime, Transformation t) {
@@ -138,6 +140,7 @@ public class InfoActivity extends AppCompatActivity {
                             };
                             b.setDuration(750);
 
+                            //Сравниваем размер картинки с исходным и выбираем действие
                             if (actheight==ih){
                                 img.startAnimation(a);
                             }
